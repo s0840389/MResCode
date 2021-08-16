@@ -1,0 +1,16 @@
+
+ 
+#!/bin/bash -l
+#$ -l h_rt=0:01:00
+#$ -l mem=1G
+#$ -pe smp 12
+#$ -l matlab=1
+#$ -ac exclusive
+#$ -N runhank
+#$ -wd /home/uctpjwl/Scratch/HANKYN
+
+#$    module load xorg-utils/X11R7.7
+#$    module load matlab/full/r2021a/9.10
+
+#$ matlab -nodisplay -nodesktop -nosplash -r "run('mainskript.m');quit;"
+
