@@ -8,11 +8,11 @@ addpath(genpath('../HANKYN/functions'))
 
 %partial_decomp_NK(SS,T,Tf,Irb,Ira,Ilab,Itau)
 
-[IRF_C_NKtot,IRF_C]=partial_decomp_NK('../../steadystates/NKfund_60_15.mat',101,40,1,1,1,1);
-[IRF_C_NKrb]=partial_decomp_NK('../../steadystates/NKfund_60_15.mat',101,40,1,0,0,0);
-[IRF_C_NKra]=partial_decomp_NK('../../steadystates/NKfund_60_15.mat',101,40,0,1,0,0);
-[IRF_C_NKlab]=partial_decomp_NK('../../steadystates/NKfund_60_15.mat',101,40,0,0,1,0);
-[IRF_C_NKtax]=partial_decomp_NK('../../steadystates/NKfund_60_15.mat',101,40,0,0,0,1);
+[IRF_C_NKtot,IRF_C]=partial_decomp_NK('../../../steadystates/NKfund_60_15.mat',101,40,1,1,1,1);
+[IRF_C_NKrb]=partial_decomp_NK('../../../steadystates/NKfund_60_15.mat',101,40,1,0,0,0);
+[IRF_C_NKra]=partial_decomp_NK('../../../steadystates/NKfund_60_15.mat',101,40,0,1,0,0);
+[IRF_C_NKlab]=partial_decomp_NK('../../../steadystates/NKfund_60_15.mat',101,40,0,0,1,0);
+[IRF_C_NKtax]=partial_decomp_NK('../../../steadystates/NKfund_60_15.mat',101,40,0,0,0,1);
 
 scal1=IRF_C(1)./IRF_C_NKtot(1);
 %scal=ones(1,24);
@@ -39,11 +39,11 @@ title('HANK')
 %% Decompse YN consumption
  
 
-[IRF_C_YNtot,IRF_C]=partial_decomp_YN('../../steadystates/YNfund_60_15.mat',101,40,1,1,1,1);
-[IRF_C_YNrb]=partial_decomp_YN('../../steadystates/YNfund_60_15.mat',101,40,1,0,0,0);
-[IRF_C_YNra]=partial_decomp_YN('../../steadystates/YNfund_60_15.mat',101,40,0,1,0,0);
-[IRF_C_YNlab]=partial_decomp_YN('../../steadystates/YNfund_60_15.mat',101,40,0,0,1,0);
-[IRF_C_YNtax]=partial_decomp_YN('../../steadystates/YNfund_60_15.mat',101,40,0,0,0,1);
+[IRF_C_YNtot,IRF_C]=partial_decomp_YN('../../../steadystates/YNfund_60_15.mat',101,40,1,1,1,1);
+[IRF_C_YNrb]=partial_decomp_YN('../../../steadystates/YNfund_60_15.mat',101,40,1,0,0,0);
+[IRF_C_YNra]=partial_decomp_YN('../../../steadystates/YNfund_60_15.mat',101,40,0,1,0,0);
+[IRF_C_YNlab]=partial_decomp_YN('../../../steadystates/YNfund_60_15.mat',101,40,0,0,1,0);
+[IRF_C_YNtax]=partial_decomp_YN('../../../steadystates/YNfund_60_15.mat',101,40,0,0,0,1);
 
 scal2=IRF_C(1)/IRF_C_YNtot(1);
 %scal=ones(1,24);

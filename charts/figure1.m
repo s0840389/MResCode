@@ -5,7 +5,7 @@ if loadd==1
 clear all
 close all
 
-repdir='../../VAR/jvaa034_replication_codes_cantore_ferroni_leon_ledesma/replication_codes_Cantore_Ferroni_Leon_Ledesma/replication_codes_missing_link_appendix/Appendix A-B-D-F';
+repdir='../../../VAR/jvaa034_replication_codes_cantore_ferroni_leon_ledesma/replication_codes_Cantore_Ferroni_Leon_Ledesma/replication_codes_missing_link_appendix/Appendix A-B-D-F';
 
 %load(strcat(repdir,'/Figure_B3/workspace.mat'))
 load(strcat(repdir,'/Figures_B1_B8_B9_B10/workspace.mat'))

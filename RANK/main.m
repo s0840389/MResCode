@@ -230,7 +230,7 @@ h.Position(3) =h.Position(3)*1.3;
 h.Position(4) =h.Position(4)*1.3;
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(h,'../MResDiss/IRF_RANK','-dpdf','-r0')
+print(h,'../charts/IRF_RANK','-dpdf','-r0')
 
 figure(2)
 h = gcf;
@@ -239,7 +239,7 @@ h.Position(3) =h.Position(3)*1.3;
 h.Position(4) =h.Position(4)*1.3;
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(h,'../MResDiss/IRF_WCNK','-dpdf','-r0')
+print(h,'../charts/IRF_WCNK','-dpdf','-r0')
 
 
 

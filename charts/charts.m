@@ -10,7 +10,7 @@ YN2Wcol= [0.0 0.8 0.0];
 %% IRF-HANK
 
 % NK model
-load('../../steadystates/NKfund_60_15.mat')
+load('../../../steadystates/NKfund_60_15.mat')
 
 IRF_NK=IRF_state_sparse;
 
@@ -99,7 +99,7 @@ plot(IRF_giniC,'Color',NKcol,'LineWidth',1.8)
 %% YN model 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-load('../../steadystates/YNfund_60_15.mat')
+load('../../../steadystates/YNfund_60_15.mat')
 
 IRF_YN=IRF_state_sparse;
 
@@ -250,7 +250,7 @@ plot(IRF_giniC,'Color',YNcol,'LineWidth',1.8)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-load('../../steadystates/YNfund2W_60_15.mat')
+load('../../../steadystates/YNfund2W_60_15.mat')
 
 IRF_YN2W=IRF_state_sparse;
 

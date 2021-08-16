@@ -6,14 +6,15 @@ clc
 clear
 
 addpath(genpath('functions'))
-addpath(genpath('latex'))
+
 
 UCL=0;
 
 %% Select options
 % Search for steady state and name it
 FindNewSS           = false;
-casename            = '../../steadystates/NKfund_60_15.mat';
+casename            = '../../../../steadystates/NKfund_60_15.mat';
+filename=casename;
 
 if UCL==1
 casename            = '../steadystates/NKfund_60_15.mat';
@@ -90,7 +91,7 @@ x=x0;
 
 for t=1:mpar.maxlag
     IRF_state_sparse(:,t)=(MX*x)';
-    x=hx*x*exp(-max(0,t-25)/250);
+    x=hx*x%*exp(-max(0,t-25)/250);
 end
 
 plot_IRFs_prep
