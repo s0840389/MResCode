@@ -8,17 +8,16 @@ clear
 addpath(genpath('functions'))
 addpath(genpath('latex'))
 
-UCL=0;
 
 %% Select options
 % Search for steady state and name it
-FindNewSS           = false;
-casename            = '../../steadystates/NKfund_60_15.mat';
-filename=casename;
-if UCL==1
-casename            = '../steadystates/NKfund_60_15.mat';
-filename=casename;
-end
+FindNewSS           = true;
+casename            = '../../steadystates/YNprofits_50_5.mat';
+doirf              = true;
+
+% Options
+mpar.overrideEigen  = true; % Warning appears, but critical Eigenvalue shifted
+print_IRFs          = false; % Plot and print as PDF
 
 %% Solve for Steady state
 if FindNewSS  
@@ -38,13 +37,11 @@ else
    
 end
 
-%%
-doirf=true;
-mpar.overrideEigen  = true; % Warning appears, but critical Eigenvalue shifted
-print_IRFs          = true; % Plot and print as PDF
 
 if doirf
+    mpar.overrideEigen  = true; % Warning appears, but critical Eigenvalue shifted
 
+    
 %% Select aggregate shock
 % aggrshock           = 'TFP';
 %aggrshock           = 'Uncertainty';
@@ -58,14 +55,6 @@ disp(strcat('Calculating IRF: ',aggrshock))
 %% Produce matrices to reduce state-space
 mainskript_statereduc
 
-
-% persistence params
-
-par.rhog=0.95; % gov spending 
-par.rhozy=0.95; % tfp 
-par.rhozi=0.95; % investmetn specific
-
-
 %% Initialize System
 disp('Computing system for SS.');
 F = @(a,b,c,d)Fsys(a,b,c,d,Xss,Yss,Gamma_state,indexMUdct,indexVKdct,DC1,DC2,DC3,...
@@ -73,9 +62,9 @@ F = @(a,b,c,d)Fsys(a,b,c,d,Xss,Yss,Gamma_state,indexMUdct,indexVKdct,DC1,DC2,DC3
 
 [Fss,LHS,RHS,Distr] = F(State,State_m,Contr,Contr_m);
 
-if max(abs(Fss))>0.001
-    [Fss LHS RHS]
-    error('Fss NE 0')
+if max(abs(Fss))>0.01
+    warning('Fss NE 0')
+    Fss
 end
 %% Solve RE via Schmitt-Grohe-Uribe Form
 [hx,gx,F1,F2,F3,F4,par] = SGU_solver(F,mpar,par);
@@ -83,7 +72,7 @@ end
 %% Produce IRFs
 disp('Calculating IRFs.');
 
-mpar.maxlag=40; % Quarters
+mpar.maxlag=24; % Quarters
 
 x0=zeros(mpar.numstates,1);
 x0(end)=par.sigmaS;
@@ -98,13 +87,14 @@ x=x0;
 
 for t=1:mpar.maxlag
     IRF_state_sparse(:,t)=(MX*x)';
-    x=hx*x%*exp(-max(0,t-25)/250);
+    x=hx*x;
 end
 
 plot_IRFs_prep
 
 if print_IRFs
-
+plot_IRFs
+end
 
 irflist=char('RB','PI','Y','C','I','M','LS','N','W');
 
@@ -118,12 +108,6 @@ subplot(3,3,i)
 eval(sprintf('plot(IRF_%s)',irflist(i,:)))
 eval(sprintf('title("%s")',irflist(i,:)))
 
-if irflist(i,:)=='LS'
-hold on
-plot(ones(size(IRF_LS))*targets.LS)
-hold off
-end
-
 end
 
 saveas(gcf,'IRF6.jpg')
@@ -134,16 +118,5 @@ bar(moneydist)
 subplot(3,1,2)
 bar(capdist)
 subplot(3,1,3)
-plot(squeeze(c_a_guess(:,25,:)))
-legend(num2str([1:mpar.nh]'))
-
-
+plot(c_a_guess(:,25,5))
 end
-
-end
-
-
-
-%% Saving again (with IRFs)
-
-save(filename)

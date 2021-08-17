@@ -1,5 +1,6 @@
 
 IRF_distr=Gamma_state*IRF_state_sparse(1:mpar.numstates-mpar.os,1:mpar.maxlag);
+
 % preparation
 IRF_H=100*grid.h(1:end-1)*IRF_distr(mpar.nm+mpar.nk+(1:mpar.nh-1),2:end)/par.H;
 K=grid.k*IRF_distr(mpar.nm+(1:mpar.nk),:)+grid.K;
@@ -8,11 +9,12 @@ K=grid.k*IRF_distr(mpar.nm+(1:mpar.nk),:)+grid.K;
 
 I=exp(IRF_state_sparse(end-mpar.oc+10,1:end-1))*targets.Inv;
 
-IRF_tau=100*IRF_state_sparse(mpar.numstates-7,2:end);
-IRF_K=100*IRF_state_sparse(mpar.numstates-6,1:end-1);
-IRF_qs=100*IRF_state_sparse(mpar.numstates-4,2:end);
-IRF_qk=100*IRF_state_sparse(mpar.numstates-5,2:end);
-IRF_W=100*IRF_state_sparse(mpar.numstates-2,2:end);
+IRF_tau=100*IRF_state_sparse(mpar.numstates-10,2:end);
+IRF_K=100*IRF_state_sparse(mpar.numstates-9,1:end-1);
+IRF_qs=100*IRF_state_sparse(mpar.numstates-7,2:end);
+IRF_qk=100*IRF_state_sparse(mpar.numstates-8,2:end);
+IRF_W=100*IRF_state_sparse(mpar.numstates-5,2:end);
+IRF_G=100*IRF_state_sparse(mpar.numstates-4,1:end-1);
 RB=par.RB+(IRF_state_sparse(mpar.numstates-1,2:end));
 IRF_RB=100*100*(RB-par.RB);
 IRF_S=100*IRF_state_sparse(end,1:end-1);
@@ -25,15 +27,15 @@ IRF_Eq=100*IRF_state_sparse(end-mpar.oc+1,1:end-1);
 IRF_PI=100*100*IRF_state_sparse(end-mpar.oc+2,1:end-1);
 IRF_Y=100*IRF_state_sparse(end-mpar.oc+3,1:end-1);
 IRF_G=100*IRF_state_sparse(end-mpar.oc+4,1:end-1);
-IRF_PIw=100*IRF_state_sparse(end-mpar.oc+5,1:end-1);
-IRF_R=100*IRF_state_sparse(end-mpar.oc+6,1:end-1);
-IRF_PId=100*IRF_state_sparse(end-mpar.oc+7,1:end-1);
-IRF_N=100*IRF_state_sparse(end-mpar.oc+8,1:end-1);
-IRF_B=100*IRF_state_sparse(end-mpar.oc+9,1:end-1);
-IRF_I=100*IRF_state_sparse(end-mpar.oc+10,1:end-1);
-IRF_ra=100*IRF_state_sparse(end-mpar.oc+11,1:end-1);
-IRF_C=100*IRF_state_sparse(end-mpar.oc+12,1:end-1);
-IRF_giniC=100*IRF_state_sparse(end-mpar.oc+13,1:end-1);
+IRF_PIw=100*IRF_state_sparse(end-mpar.oc+4,1:end-1);
+IRF_R=100*IRF_state_sparse(end-mpar.oc+5,1:end-1);
+IRF_PId=100*IRF_state_sparse(end-mpar.oc+6,1:end-1);
+IRF_N=100*IRF_state_sparse(end-mpar.oc+7,1:end-1);
+IRF_B=100*IRF_state_sparse(end-mpar.oc+8,1:end-1);
+IRF_I=100*IRF_state_sparse(end-mpar.oc+9,1:end-1);
+IRF_ra=100*IRF_state_sparse(end-mpar.oc+10,1:end-1);
+IRF_C=100*IRF_state_sparse(end-mpar.oc+11,1:end-1);
+IRF_giniC=100*IRF_state_sparse(end-mpar.oc+12,1:end-1);
 
 %IRF_ly=100*IRF_state_sparse(end-mpar.oc+13,1:end-1);
 %IRF_le=100*IRF_state_sparse(end-mpar.oc+14,1:end-1);

@@ -89,6 +89,11 @@ par.phiw=par.thetaw*(par.epsilon_w-1)*par.tau/((1-par.thetaw)*(1-par.beta*par.th
 
 par.kappa_w=(1-par.thetaw)*(1-par.beta*par.thetaw)/par.thetaw;
 
+% persistence params
+
+par.rhog=0.95; % gov spending 
+par.rhozy=0.95; % tfp 
+par.rhozi=0.95; % investmetn specific
 
 %% Returns
 par.PI  = 1.00^.25;     % Gross inflation

@@ -6,6 +6,8 @@ clc
 clear
 
 addpath(genpath('functions'))
+addpath(genpath('latex'))
+
 
 UCL=0;
 
@@ -13,7 +15,7 @@ UCL=0;
 %% Select options
 % Search for steady state and name it
 FindNewSS           = false;
-casename            = '../../../steadystates/YNfund_60_15.mat';
+casename            = '../../steadystates/YNfund_60_15.mat';
 filename=casename;
 if UCL==1
 casename            = '../steadystates/YNfund_60_15.mat';
@@ -63,6 +65,13 @@ disp(strcat('Calculating IRF: ',aggrshock))
 mainskript_statereduc
 
 
+% persi
+
+
+par.rhog=0.95; % gov spending 
+par.rhozy=0.95; % tfp 
+par.rhozi=0.95; % investmetn specific
+
 %% Initialize System
 disp('Computing system for SS.');
 F = @(a,b,c,d)Fsys(a,b,c,d,Xss,Yss,Gamma_state,indexMUdct,indexVKdct,DC1,DC2,DC3,...
@@ -95,7 +104,7 @@ x=x0;
 
 for t=1:mpar.maxlag
     IRF_state_sparse(:,t)=(MX*x)';
-    x=hx*x%*exp(-max(0,t-25)*1/250);
+    x=hx*x*exp(-max(0,t-25)*1/250);
 end
 
 plot_IRFs_prep

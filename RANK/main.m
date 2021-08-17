@@ -3,9 +3,11 @@ clear all
 
 printirf=false;
 
-pars
+pars % set parameters for all models
 
-main_NK
+%% solve models
+
+main_NK % 
 
 main_YN
 
@@ -14,9 +16,11 @@ main_NKcap
 main_YNcap
 
 %% Figure IRF-RANK
+
 NKcol =  [0.2 0.2 1.0];
 YNcol =  [1 0 0.83];
 YN2Wcol= [0.0 0.8 0.0];
+
 figure(1)
 clf
 
@@ -49,7 +53,7 @@ hline=refline(0,0);
 hline.Color='black';
 title('Inflation')
 
-%consumption and investment
+%consumption 
 subplot(4,2,3)
 
 plot(IRF_NK(19,1:end-1)*100,'Color',NKcol,'LineWidth',1.8)
@@ -221,7 +225,7 @@ hline=refline(0,0);
 hline.Color='black';
 title('Labour productivity')
 
-%%
+%% save figures
 
 figure(1)
 h = gcf;

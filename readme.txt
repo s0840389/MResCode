@@ -6,13 +6,13 @@ Folder structure
 
     Contains matlab and R codes to generate figures in text
 
-    charts.m - creates charts in section 4
+        charts.m - creates most IRF charts in section 4
 
-    decomp_charts.m - Does the partial eq consumption decomp of the HANK IRF's
+        decomp_charts.m - Does the partial eq consumption decomp of the HANK IRF's
 
-    charts.r - creates consumption decomp chart
+        charts.r - creates consumption decomp chart
 
-    figure1.m - constructs VAR IRF for the labour share [ need to add code for actual VAR]
+        figure1.m - constructs VAR IRF for the labour share [ need to clean up & add code for actual VAR]
 
     2) HANK 
 
@@ -27,13 +27,13 @@ steady states are saved in directory '../../../steadysteates' new users need to 
 
     3) RANK
 
-     main.m solves 4 models and produces IRF's for those models
+     main.m solves 4 models and produces IRF's for those models using a first order peturbation
 
-    NK -  a text book medium scale model
+        NK -  a text book medium scale model
 
-    NKYN - model augmented with expansionar labour
+        NKYN - model augmented with expansionary labour
 
-    NKcap - two agent baby hank model with workers and capatalists
+        NKcap - two agent baby hank model with workers and capatalists
 
-    NKYNcap - two agent baby hank model with workers and capatalists augmented with expansionary labour
+        NKYNcap - two agent baby hank model with workers and capatalists augmented with expansionary labour
 

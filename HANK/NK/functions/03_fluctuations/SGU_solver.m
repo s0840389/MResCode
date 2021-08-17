@@ -122,7 +122,7 @@ for Yct = 0:mpar.oc-1
 end
 
 %% Remove numerical garbage from F2: marginal distribution in h should not be moved by controls
-F2((mpar.nm+mpar.nk-2):mpar.numstates-8,:)=0;
+F2((mpar.nm+mpar.nk-2):mpar.numstates-11,:)=0;
 
 %% Schmidt-Grohé and Uribe code based on qz decomposition of the system
 %  Code adapted from SGUs online ressources

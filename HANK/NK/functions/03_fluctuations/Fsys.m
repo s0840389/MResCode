@@ -52,18 +52,17 @@ Vkind = length(indexMUdct)+(1:length(indexVKdct));
 Eqind  = Ny+1;
 PIind = Ny+2;
 Yind  = Ny+3;
-Gind  = Ny+4;
-PIwind  = Ny+5;
-Rind  = Ny+6;
-Profitind  = Ny+7;
-Nind  = Ny+8;
-Bind  = Ny+9;
-Invind= Ny+10;
-raind= Ny+11;
-Cind= Ny+12;
-giniCind= Ny+13;
+PIwind  = Ny+4;
+Rind  = Ny+5;
+Profitind  = Ny+6;
+Nind  = Ny+7;
+Bind  = Ny+8;
+Invind= Ny+9;
+raind= Ny+10;
+Cind= Ny+11;
+giniCind= Ny+12;
 
-hhcind=[(Ny+14):(Ny+13+length(targets.cinds))]';
+hhcind=[(Ny+13):(Ny+12+length(targets.cinds))]';
 
 %Yss=[invmutil(mutil_c(:)); invmutil(Vk(:)); log(par.Q); log(par.PI); log(Output);...
  %   log(par.G); log(par.W) ; log(par.R); log(par.PROFITS); log(par.N); log(targets.T);...
@@ -88,8 +87,11 @@ qkind=NxNx+3;
 qsind=NxNx+4;
 Invstind=NxNx+5;
 Wind=NxNx+6;
-RBind = NxNx+7;
-Sind  = NxNx+8;
+Gind=NxNx+7;
+Zyind=NxNx+8;
+Ziind=NxNx+9;
+RBind = NxNx+10;
+Sind  = NxNx+11;
 
 %% Control Variables (Change Value functions according to sparse polynomial)
 Control      = Control_sparse;
@@ -100,28 +102,36 @@ Controlminus(end-mpar.oc+1:end)  = ControlSS(end-mpar.oc+1:end) + (Controlminus_
 
 %% State Variables
 % read out marginal histogramm in t+1, t
-Distribution      = StateSS(1:end-8) + Gamma_state * State(1:NxNx);
-Distributionminus = StateSS(1:end-8) + Gamma_state * Stateminus(1:NxNx);
+Distribution      = StateSS(1:end-11) + Gamma_state * State(1:NxNx);
+Distributionminus = StateSS(1:end-11) + Gamma_state * Stateminus(1:NxNx);
 
 % Aggregate Endogenous States
+tau      = StateSS(end-10) + (State(end-10));
+tauminus = StateSS(end-10) + (Stateminus(end-10));
 
-tau      = StateSS(end-7) + (State(end-7));
-tauminus = StateSS(end-7) + (Stateminus(end-7));
+K      = exp(StateSS(end-9) + (State(end-9)));
+Kminus = exp(StateSS(end-9) + (Stateminus(end-9)));
 
-K      = exp(StateSS(end-6) + (State(end-6)));
-Kminus = exp(StateSS(end-6) + (Stateminus(end-6)));
+qk      = exp(StateSS(end-8) + (State(end-8)));
+qkminus = exp(StateSS(end-8) + (Stateminus(end-8)));
 
-qk      = exp(StateSS(end-5) + (State(end-5)));
-qkminus = exp(StateSS(end-5) + (Stateminus(end-5)));
+qs      = exp(StateSS(end-7) + (State(end-7)));
+qsminus = exp(StateSS(end-7) + (Stateminus(end-7)));
 
-qs      = exp(StateSS(end-4) + (State(end-4)));
-qsminus = exp(StateSS(end-4) + (Stateminus(end-4)));
+Invst      = exp(StateSS(end-6) + (State(end-6)));
+Invstminus = exp(StateSS(end-6) + (Stateminus(end-6)));
 
-Invst      = exp(StateSS(end-3) + (State(end-3)));
-Invstminus = exp(StateSS(end-3) + (Stateminus(end-3)));
+W      = exp(StateSS(end-5) + (State(end-5)));
+Wminus = exp(StateSS(end-5) + (Stateminus(end-5)));
 
-W      = exp(StateSS(end-2) + (State(end-2)));
-Wminus = exp(StateSS(end-2) + (Stateminus(end-2)));
+G      = exp(StateSS(end-4) + (State(end-4)));
+Gminus = exp(StateSS(end-4) + (Stateminus(end-4)));
+
+Zy      = exp(StateSS(end-3) + (State(end-3)));
+Zyminus = exp(StateSS(end-3) + (Stateminus(end-3)));
+
+Zi      = exp(StateSS(end-2) + (State(end-2)));
+Ziminus = exp(StateSS(end-2) + (Stateminus(end-2)));
 
 RB      = StateSS(end-1) + (State(end-1));
 RBminus = StateSS(end-1) + (Stateminus(end-1));
@@ -129,6 +139,8 @@ RBminus = StateSS(end-1) + (Stateminus(end-1));
 % Aggregate Exogenous States
 S       = StateSS(end) + (State(end));
 Sminus  = StateSS(end) + (Stateminus(end));
+
+
 
 %% Split the Control vector into items with names
 % Controls
@@ -163,7 +175,6 @@ Inv=exp(Control(Invind));
 PIminus = exp(Controlminus(PIind));
 Eqminus  = exp(Controlminus(Eqind ));
 Yminus  = exp(Controlminus(Yind ));
-Gminus  = exp(Controlminus(Gind ));
 Rminus  = exp(Controlminus(Rind ));
 Profitminus  = exp(Controlminus(Profitind ));
 Nminus  = exp(Controlminus(Nind ));
@@ -205,7 +216,7 @@ RHS(Sind) = (par.rhoS * (Sminus));
 switch(aggrshock)
     case('MP')
         EPS_TAYLOR=Sminus;
-        TFP=1;
+    %    TFP=Zyminus;
     case('TFP')
         TFP=exp(Sminus);
         EPS_TAYLOR=0;
@@ -215,6 +226,8 @@ switch(aggrshock)
         % Tauchen style for Probability distribution next period
         [P,~,~] = ExTransitions(exp(Sminus),grid,mpar,par);
 end
+
+TFP=Zyminus;
 
 % Calculate aggregate Capital, Bonds and Human Capital Supply in t
 marginal_mminus = Distributionminus(1:mpar.nm)';
@@ -461,13 +474,13 @@ taxrevenue =(1-tau).*W.*Nminus;%+(1-tau)*(Profitminus+Rminus*Kminus);
 %RHS(nx+PIind)=(B/Bminus);
 %LHS(nx+PIind)=(Bminus/targets.B)^(-par.gamma_B)*(PIminus/par.PI)^par.gamma_pi*(Yminus/targets.Y)^par.gamma_Y;
 
-RHS(nx+PIind)=par.G;
-LHS(nx+PIind)=Gminus;
+RHS(nx+PIind)=log(G);
+LHS(nx+PIind)=par.rhog*log(Gminus)+(1-par.rhog)*log(par.G);
 
 % (12) Government expenditures
-LHS(nx+Gind)       = (Gminus);
+LHS(Gind)       = (Gminus);
 
-RHS(nx+Gind) =  B - Bminus*RBminus/PIminus + taxrevenue;
+RHS(Gind) =  B - Bminus*RBminus/PIminus + taxrevenue;
 
 % (13) taxes
 
@@ -478,7 +491,7 @@ RHS(tauind) = ((1-tauminus)/(1-par.tau))^par.rho_tax *((Bminus/targets.B)^par.ga
 
 
 % (14) Resulting Price of Capital
-LHS(qkind)       = qk;
+LHS(qkind)       = qk*Ziminus;
 RHS(qkind)=1+par.phi*log(Invminus/Invstminus)+par.phi/2*log(Invminus/Invstminus)^2- par.phi/(1+ra)*Inv/Invminus*log(Inv/Invminus);
 
 % (15) expected price of capital def
@@ -513,8 +526,7 @@ A = sum(sum(sum(grid.k.*JD_new)));
 %RHS(qsind)=A-qk*K;
 
 LHS(qsind)       = K;
-RHS(qsind)       =(1-par.delta)*Kminus+Invminus-par.phi/2*log(Invminus/Invstminus)^2*Invminus;
-
+RHS(qsind)       =(1-par.delta)*Kminus+Invminus*Ziminus-par.phi/2*log(Invminus/Invstminus)^2*Invminus;
 
 
 % (20) Consumption
@@ -540,6 +552,17 @@ RHS(nx+Cind)=sum(sum(sum(par.nu*c_a_star.*JDminus+(1-par.nu)*c_n_star.*JDminus))
 % consumption households of interest
 LHS(nx+hhcind)=hhcminus;
 RHS(nx+hhcind)=par.nu*c_a_star(targets.cinds)+(1-par.nu)*c_n_star(targets.cinds);
+
+
+
+ % other states
+
+ RHS(Ziind)=log(Zi);
+LHS(Ziind)=par.rhozi*log(Ziminus);
+
+
+ RHS(Zyind)=log(Zy);
+LHS(Zyind)=par.rhozy*log(Zyminus);
 
 
 %% Difference

@@ -5,12 +5,12 @@ invmutil = @(mu)((1./mu).^(1/par.xi));
 Xss=[squeeze(sum(sum(joint_distr,2),3)); ... % marginal distribution liquid
     squeeze(sum(sum(joint_distr,1),3))'; ... % marginal distribution illiquid
     squeeze(sum(sum(joint_distr,2),1)); ... % marginal distribution productivity
-    par.tau; log(grid.K); log(par.Q); log(qs);
+   par.tau; log(grid.K); log(par.Q); log(qs);
     log(targets.Inv); log(par.W);
-     log(par.RB); 0];
+    log(par.G);0;0;log(par.RB); 0];
 
 Yss=[invmutil(mutil_c(:)); invmutil(Vk(:)); log(par.Q); log(par.PI); log(Output);...
-    log(par.G); log(par.W)*0 ; log(par.R); log(par.PROFITS); log(par.N);...
+     log(par.W)*0 ; log(par.R); log(par.PROFITS); log(par.N);...
     log(targets.B) ;log(targets.Inv); log(par.R); log(targets.C); targets.GiniC;
  log(css(targets.cinds))];
 %% Mapping for Histogram
