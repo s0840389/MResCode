@@ -1,7 +1,7 @@
 
 pars
 
-
+printirf=true
 
 %% steady state
 

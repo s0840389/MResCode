@@ -137,6 +137,7 @@ RHS(1)=p.beta*(1+int)/(1+pit)*C^-p.sigma;
  LHS(11)=Eqkminus;
  %RHS(11)=(1/(1+ra))*(pk-p.tau/2*(Inv/K-p.delta)^2+p.tau*(Inv/K-p.delta)*Inv/K+(1-p.delta)*Eqk);
   RHS(11)=1/(1+ra)*(pk+(1-p.delta)*Eqk);
+  
  % (12) capital lom
  
  LHS(12)=K;
