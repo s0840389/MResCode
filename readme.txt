@@ -12,7 +12,7 @@ Folder structure
 
         charts.r - creates consumption decomp chart
 
-        figure1.m - constructs VAR IRF for the labour share [ need to clean up & add code for actual VAR]
+        VAR/main.m - Estimates the VAR in figure 1. [Data included] 
 
     2) HANK 
 
@@ -36,4 +36,9 @@ steady states are saved in directory '../../../steadysteates' new users need to 
         NKcap - two agent baby hank model with workers and capatalists
 
         NKYNcap - two agent baby hank model with workers and capatalists augmented with expansionary labour
+
+
+    4) DynareCode 
+    
+    Contains the dynare mod files and data used to estimate the RANK parameters. 
 
