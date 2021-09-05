@@ -8,11 +8,15 @@ Folder structure
 
         charts.m - creates most IRF charts in section 4
 
-        decomp_charts.m - Does the partial eq consumption decomp of the HANK IRF's
+        decomp_charts.m - Does the partial eq consumption decomp of the HANK IRF's (figure 7)
 
-        charts.r - creates consumption decomp chart
+        charts.r - creates consumption decomp chart (figure 7)
 
         VAR/main.m - Estimates the VAR in figure 1. [Data included] 
+
+        ls_y_correlation.r - correlation between output and labour share 
+
+                
 
     2) HANK 
 
@@ -42,3 +46,5 @@ steady states are saved in directory '../../../steadysteates' new users need to 
     
     Contains the dynare mod files and data used to estimate the RANK parameters. 
 
+    DyamicsNK.mod - main file for the NK model
+    DyamicsNKYN.mod - main file for the NK-YN model
