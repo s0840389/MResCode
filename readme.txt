@@ -1,5 +1,9 @@
 
 
+Author: Jamie lenney
+Date: 10/09/2021
+
+
 Folder structure
 
     1) charts 
@@ -14,7 +18,7 @@ Folder structure
 
         VAR/main.m - Estimates the VAR in figure 1. [Data included] 
 
-        ls_y_correlation.r - correlation between output and labour share 
+        ls_y_correlation.r - correlation between output and labour share, and standard deviations
 
                 
 
@@ -46,5 +50,6 @@ steady states are saved in directory '../../../steadysteates' new users need to 
     
     Contains the dynare mod files and data used to estimate the RANK parameters. 
 
-    DyamicsNK.mod - main file for the NK model
-    DyamicsNKYN.mod - main file for the NK-YN model
+    DyamicsNK.mod - main estimation file for the NK model
+    DyamicsNKYN.mod - main estimation file for the NK-YN model
+    usmdoel_data.mat - data to estimate

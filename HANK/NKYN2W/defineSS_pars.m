@@ -106,8 +106,8 @@ par.Q  = 1;
 
 %% Grids
 % Idiosyncratic States
-mpar.nm         = 60;
-mpar.nk         = 60;
+mpar.nm         = 75;
+mpar.nk         = 75;
 mpar.nhy         = 9; % prod workers
 mpar.nhe         = 9; % expans workers
 mpar.nh         = mpar.nhy+mpar.nhe; 

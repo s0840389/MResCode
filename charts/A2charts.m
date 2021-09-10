@@ -28,7 +28,7 @@ title('Liquid wealth distribution')
 
 ylabel('PDF')
 xlabel('Wealth relative to Output per capita')
-
+ xlim([-5 inf])
 
 h = gcf;
 set(h,'Units','Inches');

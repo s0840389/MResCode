@@ -121,14 +121,14 @@ varobs dy  pinfobs robs dc dinve dw labobs;
 
 
 // Find mode
-//estimation(datafile=usmodel_data,mode_compute=1,mode_check,first_obs=72,presample=76,prefilter=0,mh_replic=150000,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2);
+//estimation(datafile=usmodel_data,mode_compute=1,mode_check,first_obs=72,presample=76,prefilter=0,mh_replic=4000,mh_nblocks=1,mh_jscale=0.3,mh_drop=0.2);
 //estimation(datafile=usdataSY,mode_compute=1,mode_check,first_obs=72,presample=76,prefilter=0,mh_replic=10000,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2);
 
 // MH
-estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,first_obs=72,presample=76,prefilter=0,mh_replic=75000,mh_nblocks=2,mh_jscale=0.25,mh_drop=0.2,plot_priors=0);
+//estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,first_obs=72,presample=76,prefilter=0,mh_replic=25000,mh_nblocks=2,mh_jscale=0.14,mh_drop=0.2,plot_priors=0);
 
 // add to MH
-//estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=25000,mh_nblocks=2,mh_jscale=0.2,mh_drop=0.2,plot_priors=0);
+//estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=20000,mh_nblocks=2,mh_jscale=0.24,mh_drop=0.2,plot_priors=0);
 
 // IRFs
 //estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,nodiagnostic,plot_priors=0,bayesian_irf);
@@ -136,6 +136,7 @@ estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,firs
 //Var decomp
 //estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,nodiagnostic,plot_priors=0,moments_varendo,conditional_variance_decomposition=[1 4 8 12]);
 
-//estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,nodiagnostic,plot_priors=0);
+estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNKYN_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,nodiagnostic,plot_priors=0);
 
-//stoch_simul(periods=1000,order=1,hp_filter=1600) y sy;
+
+stoch_simul(periods=1000,order=1,hp_filter=1600) y sy;

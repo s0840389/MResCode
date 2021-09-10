@@ -106,7 +106,7 @@ CTREND*exp(B)=(1+int(-1))/(1+pit)*exp(B(-1))+exp(g)-taxrev;
 
 // labour share (20)
 
-	//sy=exp(w)*exp(l)/(exp(y));
+	sy=exp(w)*exp(l)/(exp(y));
 	  
 // shocks
 	
@@ -171,8 +171,8 @@ CTREND*exp(B)=(1+int(-1))/(1+pit)*exp(B(-1))+exp(g)-taxrev;
 	dw=100*(w-w(-1))+100*ctrend;
 	pinfobs = 100*(pit)+100*pitstar;
 	robs =    100*(int)+100*intstar;
-	labobs = (ly-lss)*100 + constelab;
+	labobs = (l-lss)*100 + constelab;
 	
 	
-	sy=100*0.62*(w-wss+l-lss-y+yss) +constelab;
+	//sy=100*0.62*(w-wss+l-lss-y+yss) +constelab;
 	

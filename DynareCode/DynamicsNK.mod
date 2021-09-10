@@ -130,7 +130,8 @@ varobs dy  pinfobs robs dc dinve dw labobs;
 // simulation
 //estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNK_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,nodiagnostic,plot_priors=0);
 
-//stoch_simul(periods=1000,order=1,hp_filter=1600) y sy;
 
 
-estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNK_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,plot_priors=0);
+estimation(datafile=usmodel_data,mode_compute=0,mode_File=DynamicsNK_mode,load_mh_file,first_obs=72,presample=76,prefilter=0,mh_replic=0,mh_nblocks=2,mh_jscale=0.3,mh_drop=0.2,plot_priors=0,nodiagnostic);
+
+stoch_simul(periods=1000,order=1,hp_filter=1600) y yf sy pit;

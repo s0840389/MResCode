@@ -19,3 +19,7 @@ y.hp=hpfilter(log(y),type='lambda',freq=1600)
 corr.y.ls=cor(ls.hp$cycle,y.hp$cycle)
 
 print(corr.y.ls)
+
+print(sd(ls))
+
+print(sd(ls.hp$cycle))
