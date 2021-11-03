@@ -106,8 +106,8 @@ par.Q  = 1;
 
 %% Grids
 % Idiosyncratic States
-mpar.nm         = 75;
-mpar.nk         = 75;
+mpar.nm         = 60;
+mpar.nk         = 60;
 mpar.nh         = 15;
 mpar.tauchen    ='importance';
 

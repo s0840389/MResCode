@@ -1,7 +1,7 @@
 
 
 Author: Jamie lenney
-Date: 10/09/2021
+Date: 03-Nov-2021
 
 
 Folder structure
@@ -30,7 +30,10 @@ Folder structure
     NKYN - model augmented with expansionary labour but flexible labour markets Wy=We
     NKYN2W - model augmented with expansionary labour but inflexible labour markets Wy~=We
 
-steady states are saved in directory '../../../steadysteates' new users need to resolve the steady state and save in a chosen directory. 
+steady states are saved in directory '../steadystates' new users need to resolve the steady state and save in a chosen directory. 
+
+mainskript.m is the main file to run all the code
+definess_pars.m - is the file where parameter value and grid sizes are set.
 
 
     3) RANK
@@ -52,4 +55,4 @@ steady states are saved in directory '../../../steadysteates' new users need to 
 
     DyamicsNK.mod - main estimation file for the NK model
     DyamicsNKYN.mod - main estimation file for the NK-YN model
-    usmdoel_data.mat - data to estimate
+    usmdodel_data.mat - data to estimate

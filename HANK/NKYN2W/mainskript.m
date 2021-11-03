@@ -13,7 +13,7 @@ UCL=0;
 %% Select options
 % Search for steady state and name it
 FindNewSS           = false;
-casename            = '../../steadystates/YNfund2W_60_15.mat';
+casename            = '../steadystates/YNfund2W_60_15.mat';
 filename=casename;
 
 if UCL==1
@@ -97,7 +97,7 @@ x=x0;
 
 for t=1:mpar.maxlag
     IRF_state_sparse(:,t)=(MX*x)';
-    x=hx*x%*exp(max(t-25,0)*-1/250);;
+    x=hx*x;%*exp(max(t-25,0)*-1/250);;
 end
 
 plot_IRFs_prep
